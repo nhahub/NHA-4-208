@@ -1,0 +1,8 @@
+streamlit
+boto3
+polars
+pandas
+google-genai
+python-dotenv
+s3fs
+plotly

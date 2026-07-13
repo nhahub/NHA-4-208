@@ -1,0 +1,82 @@
+describe samhsa_master_db.mh_cld_decoded_view ;
+
+YEAR	bigint
+CASEID	bigint
+State_Name	varchar(20)
+Age_Group	varchar(17)
+Gender	varchar(15)
+Race_Category	varchar(41)
+Ethnicity	varchar(24)
+Education_Level	varchar(38)
+Marital_Status	varchar(18)
+Employment_Status	varchar(18)
+Living_Arrangement	varchar(26)
+Veteran_Status	varchar(15)
+Mental_Health_Status	varchar(35)
+Primary_Diagnosis	varchar(34)
+Secondary_Diagnosis	varchar(34)
+Substance_Use_Problem	varchar(25)
+State_Psychiatric_Hospital	varchar(10)
+Community_Mental_Health_Center	varchar(10)
+Other_Outpatient_Facility	varchar(10)
+Residential_Treatment_Center	varchar(10)
+-----------------------------------------------
+describe samhsa_master_db.nsduh_decoded_view ;
+
+Survey_Weight	double
+Survey_Year	bigint
+Detailed_Age_Group	varchar(21)
+Age_Category	varchar(15)
+Gender	varchar(7)
+Race_Ethnicity	varchar(53)
+Education_Level	varchar(31)
+Employment_Status	varchar(36)
+Personal_Income	varchar(17)
+Population_Density	varchar(49)
+Poverty_Status	varchar(45)
+Overall_Health	varchar(11)
+Past_Year_Depressive_Episode	varchar(7)
+Kessler6_Distress_Score	double
+Past_Year_Suicidal_Thoughts	varchar(7)
+Past_Year_Alcohol_Use	varchar(42)
+Past_Year_Cigarette_Use	varchar(42)
+Past_Year_Marijuana_Use	varchar(42)
+Alcohol_Use_Disorder	varchar(34)
+Marijuana_Use_Disorder	varchar(36)
+Sought_Mental_Health_Treatment	varchar(7)
+---------------------------------------------
+describe samhsa_master_db.teds_a_decoded_view
+
+Admission_Year	integer
+Age_Group	varchar(18)
+Gender	varchar(7)
+Primary_Substance	varchar(28)
+Primary_Route	varchar(10)
+Primary_Frequency	varchar(24)
+Primary_Age_At_First_Use	varchar(18)
+Service_Setting	varchar(48)
+Co_Occurring_Mental_Disorder	varchar(7)
+State_Name	varchar(20)
+Race_Category	varchar(42)
+Ethnicity	varchar(49)
+Education_Level	varchar(54)
+Employment_Status	varchar(18)
+Marital_Status	varchar(17)
+Referral_Source	varchar(39)
+Primary_Payment_Source	varchar(25)
+Health_Insurance	varchar(46)
+Days_Waiting_Group	varchar(15)
+DSM_Diagnosis	varchar(47)
+Secondary_Substance	varchar(28)
+Tertiary_Substance	varchar(28)
+Alcohol_Flag	varchar(20)
+Marijuana_Flag	varchar(22)
+Cocaine_Flag	varchar(20)
+Heroin_Flag	varchar(19)
+Methadone_Flag	varchar(22)
+Benzodiazepine_Flag	varchar(28)
+Other_Drug_Flag	varchar(23)
+Veteran_Status	varchar(11)
+--------------------------------------------
+Query result location
+s3://samhsa-datalake-2021-2023-depi/athena_results/ 
