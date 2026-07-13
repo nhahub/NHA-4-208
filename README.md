@@ -79,26 +79,31 @@ The data platform exposes a highly professional, multi-layered dashboard design.
 
 ### 🔹 1. MH-CLD Clinical Care Profiling Dashboard
 **Focus:** Visualizes primary, secondary, and tertiary psychiatric diagnoses alongside inpatient and outpatient facility utilization rates.
-**Path to Visual:** `MH-CLD/MHCLD-PBI-Photos/mhcld-photo1.jpeg`
+
+![MH-CLD Dashboard](./MH-CLD/MHCLD-PBI-Photos/mhcld-photo1.jpeg)
 
 ### 🔹 2. NSDUH Sociodemographic Disparities & Prevalence Dashboard
 **Focus:** Tracks macro-level national trends regarding mental illness prevalence across distinct demographic brackets (age, sex, income, race, and education levels).
-**Path to Visual:** `NSDUH/NSDUH-PBI-Photos/nsduh-photo1.jpeg`
+
+![NSDUH Dashboard](./NSDUH/NSDUH-PBI-Photos/nsduh-photo1.jpeg)
 
 ### 🔹 3. TEDS-A Treatment & Substance Use Admission Profiling
 **Focus:** Monitors administrative care ingestion, substance profiles, route-of-administration patterns, and dual-diagnosis vulnerabilities.
-**Path to Visual:** `TEDS-A/TEDSA-PBI-Photos/tedsa-photo1.JPG`
+
+![TEDS-A Dashboard](./TEDS-A/TEDSA-PBI-Photos/tedsa-photo1.JPG)
 
 ---
 
 ## 🤖 AI Text-to-SQL Bot
 To abstract complex SQL structures away from end-users, an interactive Natural Language AI Agent was built inside the repository.
 
-- **Core Engine:** Utilizes an LLM provider orchestrated via an application tier to accept free-form English queries (e.g., "Show me the total number of clients diagnosed with depression in California during 2023").
-- **Execution Architecture:** Generates optimized Amazon Athena dialect SQL statements, passes credentials via a secure Boto3 SDK client wrapper, executes the query on the AWS Data Lake in the background, and formats the output data dynamically for the end-user.
-- **Interface App:** Delivered via a clean, lightweight interactive layout.
-**Path to Interface Visual:** `AI-Bot/WhatsApp Image 2026-07-13 at 5.15.29 PM.jpeg`
-  ├── AI-Bot/
+- **Core Engine:** Utilizes an LLM provider orchestrated via an application tier to accept free-form English queries.
+- **Execution Architecture:** Generates optimized Amazon Athena dialect SQL statements, passes credentials via a secure Boto3 SDK client wrapper.
+
+![AI Bot Interface](./WhatsApp%20Image%202026-07-13%20at%201.31.26%20AM.jpeg)
+
+## 📁 Repository Structure
+├── AI-Bot/
 │   ├── ai_engine.py             # LLM Text-to-SQL logic & context injection
 │   ├── athena_utils.py          # Boto3 client initialization and AWS connections
 │   └── WhatsApp Image 2026-07-13 at 5.15.29 PM.jpeg  # AI Bot App Interface Visual
