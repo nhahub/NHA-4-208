@@ -2,14 +2,14 @@ import os
 import re
 import json
 from google import genai
-import streamlit as st  
+from dotenv import load_dotenv
 
+load_dotenv()
 
-_api_key = st.secrets["GEMINI_API_KEY"]
-
+_api_key = os.getenv("GEMINI_API_KEY")
 if not _api_key:
     raise EnvironmentError(
-        "GEMINI_API_KEY not found. Set it in your Streamlit Secrets before running the app."
+        "GEMINI_API_KEY not found. Set it in your .env file before running the app."
     )
 
 client = genai.Client(api_key=_api_key)
