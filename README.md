@@ -145,7 +145,7 @@ streamlit run ai_engine.py
 ## 👥 Team Information & Roles
 
 **Mohammed Mahmoud Abdelrazek** – Project Lead & Data Architect
-Defined the overall engineering strategy, enforced preprocessing pipelines, designed the central Star Schema architecture, and authored the system documentation.
+Executed the complete data engineering pipeline, from preprocessing and converting raw files to Parquet using Python, to building the AWS infrastructure. Created the databases and views in AWS Athena, designed the central Star Schema architecture, and successfully established the live connection with Power BI.
 
 **Shaza Yousef** – BI Analyst (NSDUH)
 Engineered demographic analytics models and designed the interactive National Prevalence Dashboard.
@@ -156,8 +156,8 @@ Developed the Clinical Care Profiling Dashboard and structured diagnostic profil
 **Khadija Osama** – BI Analyst (TEDS-A)
 Constructed treatment episode tracking metrics and managed semantic visualizations for care ingestion patterns.
 
-**Mohannad Mohammed** – AI & Data Engineering Associate
-Constructed the serverless infrastructure catalogs on AWS Athena and developed the Text-to-SQL AI bot engine.
+**Mohannad Mohammed** – AI Developer
+Developed and integrated the Text-to-SQL AI bot engine.
 
 ---
 
