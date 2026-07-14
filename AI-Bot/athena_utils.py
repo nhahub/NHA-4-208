@@ -3,24 +3,26 @@ import time
 import io
 import boto3
 import polars as pl
-from dotenv import load_dotenv
+import streamlit as st  # استبدال dotenv بـ streamlit
 
-load_dotenv()
+# حذف سطر load_dotenv() لأنه لم يعد مستخدماً
 
+# قراءة إعدادات قاعدة البيانات و S3 من البيئة أو استخدام القيم الافتراضية
 DATABASE_NAME = os.getenv("ATHENA_DATABASE", "samhsa_master_db")
 S3_BUCKET = os.getenv("ATHENA_S3_BUCKET", "samhsa-datalake-2021-2023-depi")
 S3_OUTPUT_LOCATION = f"s3://{S3_BUCKET}/athena_results/"
 
 
 def _get_clients():
-    aws_id = os.getenv("AWS_ACCESS_KEY_ID")
-    aws_secret = os.getenv("AWS_SECRET_ACCESS_KEY")
-    region = os.getenv("AWS_REGION", "us-east-1")
+    # جلب مفاتيح AWS مباشرة من Streamlit Secrets التي قمت بحفظها
+    aws_id = st.secrets.get("AWS_ACCESS_KEY_ID")
+    aws_secret = st.secrets.get("AWS_SECRET_ACCESS_KEY")
+    region = st.secrets.get("AWS_REGION", "us-east-1")
 
     if not aws_id or not aws_secret:
         raise EnvironmentError(
             "AWS credentials not found. Set AWS_ACCESS_KEY_ID and "
-            "AWS_SECRET_ACCESS_KEY in your .env file."
+            "AWS_SECRET_ACCESS_KEY in your Streamlit Secrets."
         )
 
     athena_client = boto3.client(
@@ -41,14 +43,6 @@ def _get_clients():
 def run_athena_query(query, poll_interval=1, timeout_seconds=120):
     """
     Executes a SQL query against Athena and returns the result as a Polars DataFrame.
-
-    Fixes vs the original version:
-      - Reads the *actual* S3 output location Athena reports back, instead of
-        assuming the result always lands at f"athena_results/{execution_id}.csv"
-        (Athena's default naming can differ, e.g. when workgroups or CTAS are used).
-      - Adds a timeout so a stuck/long-running query doesn't hang the app forever.
-      - Returns an empty Polars DataFrame instead of crashing when Athena
-        returns a query with zero result rows (empty CSV body).
     """
     athena, s3 = _get_clients()
 
@@ -90,6 +84,4 @@ def run_athena_query(query, poll_interval=1, timeout_seconds=120):
     try:
         return pl.read_csv(io.BytesIO(file_content), infer_schema_length=1000)
     except Exception:
-        # Fall back to treating everything as strings if type inference fails
-        # on a quirky Athena CSV export.
         return pl.read_csv(io.BytesIO(file_content), infer_schema_length=0)
